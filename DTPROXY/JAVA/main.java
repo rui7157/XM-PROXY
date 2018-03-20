@@ -14,7 +14,7 @@ public class TestDynamic {
 		//计算签名
 		String sign = org.apache.commons.codec.digest.DigestUtils.md5Hex(planText).toUpperCase();
 
-		//拼装请求头Proxy-Authorization的值;change 参数: false-换ip ,true-不换ip
+		//拼装请求头Authorization的值;change 参数: false-换ip ,true-不换ip
 		String authHeader = String.format("sign=%s&orderno=%s&timestamp=%d&change=%s", sign, orderno, timestamp,change);
 		return authHeader;
 	}
@@ -22,14 +22,13 @@ public class TestDynamic {
 	public static void main(String[] args) throws IOException {
 		final String url = "http://2017.ip138.com/ic.asp";
 		final int port = 8088;//这里以正式服务器端口地址为准
-		final String ip = "116.62.185.93";//这里以正式服务器ip地址为准
+		final String ip = "dynamic.xiongmaodaili.com";//这里以正式服务器ip地址为准
 		int timestamp = (int) (new Date().getTime()/1000);
-		//以下订单号，secret参数 须自行改动；最后一个参数: false-换ip ,true-不换ip
-		final String authHeader = authHeader("DT271518335046234CfxaPLWw", "e6cbae5715c6d2c72d60aa8b5d402f30", timestamp,"true");
+		//以下订单号，secret参数 须自行改动；最后一个参数: true-换ip ,false-不换ip
+		final String authHeader = authHeader("DT21520******NNzLZBtR", "df93fde449*****0e78821c", timestamp,"true");
 		System.out.println(authHeader);
-		ExecutorService thread = Executors.newFixedThreadPool(1);
-
-		for (int i=0;i<1;i++) {
+		ExecutorService thread = Executors.newFixedThreadPool(10);
+		for (int i=0;i<10;i++) {
 			thread.execute(new Runnable() {
 				@Override
 				public void run() {
@@ -39,16 +38,18 @@ public class TestDynamic {
 						doc = Jsoup.connect(url)
 								.proxy(ip, port,null)
 								.validateTLSCertificates(false)//忽略证书认证,每种语言客户端都有类似的API
-								.header("Proxy-Authorization", authHeader)
+								.header("Authorization", authHeader)
 								.userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 								.timeout(10000)
 								.get();
 						System.out.println("访问结果"+doc.text()+" 访问成功所用时间："+ (System.currentTimeMillis() - a) );
-					} catch (IOException e) {
+						Thread.sleep(1000);
+					} catch (Exception e) {
 
 					}
 				}
 			});
+
 		}
 		thread.shutdown();
 	}
