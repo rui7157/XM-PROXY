@@ -23,7 +23,7 @@ var endpoint = process.argv[2] || 'https://www.baidu.com';
 console.log('attempting to GET %j', endpoint);
 var options = url.parse(endpoint);
 options.headers = {
-  'Authorization':'sign='+sign+'&orderno='+orderno+"&timestamp="+timestamp
+  'Proxy-Authorization':'sign='+sign+'&orderno='+orderno+"&timestamp="+timestamp
 }
 options.rejectUnauthorized = false
 

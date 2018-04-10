@@ -11,7 +11,7 @@ public function immediate(){
       $ch = curl_init();
       // 设置浏览器的特定header
       curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        "Authorization:".$auth,
+        "Proxy-Authorization:".$auth,
         "Connection: keep-alive",
         "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Upgrade-Insecure-Requests: 1",

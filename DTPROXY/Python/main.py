@@ -33,7 +33,7 @@ auth = "sign=" + sign + "&" + "orderno=" + orderno + "&" + "timestamp=" + timest
 
 print(auth)
 proxy = {"http": "http://" + ip_port, "https": "https://" + ip_port}
-headers = {"Authorization": auth}
+headers = {"Proxy-Authorization": auth}
 r = requests.get("https://www.baidu.com", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
 print(r.status_code)
 print(r.content)

@@ -15,7 +15,7 @@ public class TestDynamic {
 		//计算签名
 		String sign = org.apache.commons.codec.digest.DigestUtils.md5Hex(planText).toUpperCase();
 
-		//拼装请求头Authorization的值;change 参数: false-换ip ,true-不换ip
+		//拼装请求头Proxy-Authorization的值;change 参数: false-换ip ,true-不换ip
 		String authHeader = String.format("sign=%s&orderno=%s&timestamp=%d&change=%s", sign, orderno, timestamp,change);
 		return authHeader;
 	}
@@ -39,7 +39,7 @@ public class TestDynamic {
 						doc = Jsoup.connect(url)
 								.proxy(ip, port,null)
 								.validateTLSCertificates(false)//忽略证书认证,每种语言客户端都有类似的API
-								.header("Authorization", authHeader)
+								.header("Proxy-Authorization", authHeader)
 								.userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 								.timeout(10000)
 								.get();

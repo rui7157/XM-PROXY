@@ -17,7 +17,7 @@ let options = {
     url:url,
     proxy: "http://dynamic.xiongmaodaili.com:8088",
     headers:{
-      'Authorization':'sign='+sign+'&orderno='+orderno+"&timestamp="+timestamp
+      'Proxy-Authorization':'sign='+sign+'&orderno='+orderno+"&timestamp="+timestamp
     }
 };
 function callback(error, response, body) {
