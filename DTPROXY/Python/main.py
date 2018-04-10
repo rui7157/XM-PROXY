@@ -1,18 +1,20 @@
+# 新用户只需要替换14行和15行的orderno和secret即可运行
+
 import sys
 import time
 import hashlib
 import requests
-# import grequests
 from lxml import etree
 
 _version = sys.version_info
 
 is_python3 = (_version[0] == 3)
 
-orderno = "DT20179xxxxxxxxx"
+# 个人中心获取orderno与secret
+orderno = "DT20179xxxxxxxxx"    
 secret = "3f9c2ecac7xxxxxxxxxxxxxxxx"
 
-ip = "116.62.185.93"
+ip = "dynamic.xiongmaodaili.com"
 port = "8088"
 
 ip_port = ip + ":" + port
@@ -32,13 +34,12 @@ auth = "sign=" + sign + "&" + "orderno=" + orderno + "&" + "timestamp=" + timest
 print(auth)
 proxy = {"http": "http://" + ip_port, "https": "https://" + ip_port}
 headers = {"Authorization": auth}
-r = requests.get("https://www.tianyancha.com/company/2602017365", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
+r = requests.get("https://www.baidu.com", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
 print(r.status_code)
 print(r.content)
-print(r.status_code)
-if r.status_code == 302 or r.status_code == 301 :
+print(r.status_code)if r.status_code == 302 or r.status_code == 301 :
     loc = r.headers['Location']
-    url_f = "https://www.tianyancha.com" + loc
+    url_f = "https://www.baidu.com" + loc
     print(loc)
     r = requests.get(url_f, headers=headers, proxies=proxy, verify=False, allow_redirects=False)
     print(r.status_code)

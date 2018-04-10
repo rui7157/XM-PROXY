@@ -1,3 +1,4 @@
+// 新用户替换orderno与secret即可
 public function immediate(){
   $time = time();
   $orderno = xxx;

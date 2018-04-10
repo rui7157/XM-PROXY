@@ -3,6 +3,7 @@ const request = require('request');
 
 let timestamp = parseInt(new Date().getTime()/1000);
 let url = 'http://www.baidu.com/';
+// 新用户更换orderno,secret
 let orderno = 'DT20179xxxxxxxxx';
 let secret = 'cb65091847ad42fxxxxxxx';
 

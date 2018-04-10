@@ -4,6 +4,7 @@ const https = require('https');
 const HttpsProxyAgent = require('https-proxy-agent'); //第三方包,请安装
 
 let timestamp = parseInt(new Date().getTime()/1000);
+// 新用户更换orderno,secret
 let orderno = 'DT201797xxxxxxx';
 let secret = 'cb65091847ad4xxxxxxxxxxxx';
 

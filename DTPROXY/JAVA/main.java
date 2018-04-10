@@ -1,3 +1,4 @@
+// 新用户替换29行的secret和orderno即可运行本示例代码
 import java.io.IOException;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
