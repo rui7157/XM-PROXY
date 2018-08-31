@@ -15,7 +15,7 @@ orderno = "DT20179xxxxxxxxx"
 secret = "3f9c2ecac7xxxxxxxxxxxxxxxx"
 
 ip = "dynamic.xiongmaodaili.com"
-port = "8088"
+port = "8089"
 
 ip_port = ip + ":" + port
 

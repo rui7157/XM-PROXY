@@ -22,7 +22,7 @@ public class TestDynamic {
 
 	public static void main(String[] args) throws IOException {
 		final String url = "http://2017.ip138.com/ic.asp";
-		final int port = 8088;//这里以正式服务器端口地址为准
+		final int port = 8089;//这里以正式服务器端口地址为准
 		final String ip = "dynamic.xiongmaodaili.com";//这里以正式服务器ip地址为准
 		int timestamp = (int) (new Date().getTime()/1000);
 		//以下订单号，secret参数 须自行改动；最后一个参数: true-换ip ,false-不换ip
