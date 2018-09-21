@@ -4,7 +4,6 @@ import sys
 import time
 import hashlib
 import requests
-from lxml import etree
 
 _version = sys.version_info
 
