@@ -36,7 +36,8 @@ headers = {"Proxy-Authorization": auth}
 r = requests.get("https://www.baidu.com", headers=headers, proxies=proxy, verify=False,allow_redirects=False)
 print(r.status_code)
 print(r.content)
-print(r.status_code)if r.status_code == 302 or r.status_code == 301 :
+print(r.status_code)
+if r.status_code == 302 or r.status_code == 301 :
     loc = r.headers['Location']
     url_f = "https://www.baidu.com" + loc
     print(loc)
